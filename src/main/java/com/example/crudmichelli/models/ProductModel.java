@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "tb_products")
-//public class ProductModel //utilizacao sem o Hateoas
+//public class ProductModel{ //utilizacao sem o Hateoas
 public class ProductModel extends RepresentationModel<ProductModel> {   //extendendo do RepresentationModel para poder utilizar o .add no Hateoas
     private static final long serialVersionUID = 1L;
 

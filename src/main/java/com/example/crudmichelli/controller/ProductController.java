@@ -51,7 +51,7 @@ public class ProductController {
         System.out.println("Lista: " + productList);
         return ResponseEntity.status(HttpStatus.OK).body(productList);
 
-        //return ResponseEntity.status(HttpStatus.OK).body(productRepository.findAll());    //busca padrao
+        //return ResponseEntity.status(HttpStatus.OK).body(productRepository.findAll());    //busca padrao sem a lista
     }
 
     //PARA LISTAR UM ITEM DO BANCO DE DADOS
@@ -62,6 +62,8 @@ public class ProductController {
         if(newProduct.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto nao encontrado");
         }
+        //Forma de pegar a referencia agora montando a lista
+        newProduct.get().add(linkTo(methodOn(ProductController.class).getAllProducts()).withRel("Products List"));
         return ResponseEntity.status(HttpStatus.OK).body(newProduct.get());
 
     }
